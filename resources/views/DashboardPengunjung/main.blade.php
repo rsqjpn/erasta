@@ -27,128 +27,120 @@
 
         <header class="absolute inset-x-0 top-0 z-50">
             <nav id="navbar"
-                class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 md:p-6 lg:px-8 transition-all duration-300"
+                class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-red-900 shadow-md transition-all duration-300"
                 aria-label="Global">
-                <div class="flex lg:flex-1">
-                    <a href="#" class="-m-1.5 p-1.5">
-                        <span class=" font-bold text-md text-white">Logo Erasta</span>
-                    </a>
-                </div>
-                <div class="flex lg:hidden">
-                    <button id="menu-toggle" type="button"
-                        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                            aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="hidden lg:flex lg:gap-x-12 mx-7">
-                    <a href="#" class="text-sm font-semibold text-white hover:text-red-200">Home</a>
-                    <a href="#about-us" class="text-sm font-semibold text-white hover:text-red-200">Tentang Kami</a>
-                    <a href="#jadwal" class="text-sm font-semibold text-white hover:text-red-200">Jadwal</a>
-                    <a href="#lokasi" class="text-sm font-semibold text-white hover:text-red-200">Lokasi</a>
-                    <a href="#daftar" class="text-sm font-semibold text-white hover:text-red-200">Cara Daftar</a>
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="text-lg font-bold text-white">Logo Erasta</a>
                 </div>
 
-                <button data-collapse-toggle="navbar-dropdown" type="button"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden  focus:outline-none focus:ring-2  dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                    aria-controls="navbar-dropdown" aria-expanded="false">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 17 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M1 1h15M1 7h15M1 13h15" />
-                    </svg>
-                </button>
-                <div class="hidden md:block md:w-auto" id="navbar-dropdown">
-                    <ul
-                        class="flex flex-col font-medium p-4 md:p-0 mt-4  rounded-lg bg-none md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex lg:gap-x-10">
+                    <a href="#" class="text-sm font-semibold text-white hover:text-gray-300">Home</a>
+                    <a href="#about-us" class="text-sm font-semibold text-white hover:text-gray-300">Tentang Kami</a>
+                    <a href="#jadwal" class="text-sm font-semibold text-white hover:text-gray-300">Jadwal</a>
+                    <a href="#lokasi" class="text-sm font-semibold text-white hover:text-gray-300">Lokasi</a>
+                    <a href="#daftar" class="text-sm font-semibold text-white hover:text-gray-300">Cara Daftar</a>
+                </div>
 
-                        <li>
-                            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
-                                class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
-                                <div class="relative">
-                                    <img class="w-7 h-7 rounded-full"
-                                        src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
-                                        alt="">
-                                    <span
-                                        class="bottom-0 left-5 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
-                                </div>
-                                <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    fill="none" viewBox="0 0 10 6">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="m1 1 4 4 4-4" />
-                                </svg>
-                            </button>
-                            <!-- Dropdown menu -->
-                            <div id="dropdownNavbar"
-                                class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-400"
-                                    aria-labelledby="dropdownLargeButton">
-                                    @if (Auth::check())
-                                        <a href="{{ route('profile') }}" class="px-4">Profile</a>
-                                        <a href="{{ route('dashboard') }}" class="px-4">Dashboard</a>
-                                        <form action="{{ route('logout') }}" method="POST" class="inline">
+                <!-- Profile & Mobile Menu Toggle -->
+                <div class="flex items-center space-x-4">
+                    <!-- Profile Dropdown -->
+                    <div class="relative">
+                        <button id="dropdownNavbarLink" class="flex items-center text-white focus:outline-none">
+                            <div class="relative">
+                                <img class="w-8 h-8 rounded-full"
+                                    src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
+                                    alt="Profile">
+                                <span
+                                    class="absolute bottom-0 left-5 w-3.5 h-3.5 bg-green-400 border-2 border-white rounded-full"></span>
+                            </div>
+                            <svg class="w-4 h-4 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+
+                        <!-- Dropdown menu -->
+                        <div id="dropdownNavbar"
+                            class="hidden absolute right-0 mt-2 w-44 bg-white divide-y divide-gray-200 rounded-lg shadow-lg">
+                            <ul class="py-2 text-sm text-gray-700">
+                                @if (Auth::check())
+                                    <li><a href="{{ route('profile') }}"
+                                            class="block px-4 py-2 hover:bg-gray-100">Profile</a></li>
+                                    <li><a href="{{ route('dashboard') }}"
+                                            class="block px-4 py-2 hover:bg-gray-100">Dashboard</a></li>
+                                    <li>
+                                        <form action="{{ route('logout') }}" method="POST">
                                             @csrf
                                             <button type="submit"
-                                                class="bg-gray-800 px-4 py-2 rounded">Logout</button>
+                                                class="block w-full text-left px-4 py-2 hover:bg-gray-100">
+                                                Logout
+                                            </button>
                                         </form>
-                                    @else
-                                        <a href="{{ route('login') }}" class="px-4">Login</a>
-                                        <a href="{{ route('register') }}" class="px-4">Register</a>
-                                    @endif
+                                    </li>
+                                @else
+                                    <li><a href="{{ route('login') }}"
+                                            class="block px-4 py-2 hover:bg-gray-100">Login</a></li>
+                                    <li><a href="{{ route('register') }}"
+                                            class="block px-4 py-2 hover:bg-gray-100">Register</a></li>
+                                @endif
+                            </ul>
+                        </div>
+                    </div>
 
-                                </ul>
-                                <div class="py-1">
-                                    <a href="#"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><i
-                                            class="fa-solid fa-right-to-bracket mr-1"></i>Login</a>
-                                </div>
-                            </div>
-            </nav>
-
-            <!-- Mobile menu -->
-            <div id="mobile-menu"
-                class="hidden lg:hidden fixed inset-0 z-50 bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                <div class="flex items-center justify-between">
-                    <a href="#" class="-m-1.5 p-1.5">
-                        <span class="sr-only">Your Company</span>
-                        <img class="h-8 w-auto"
-                            src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-                            alt="">
-                    </a>
-                    <button id="menu-close" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
-                        <span class="sr-only">Close menu</span>
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    <!-- Mobile Menu Button -->
+                    <button id="menu-toggle" type="button" class="lg:hidden text-white focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-16 6h16" />
                         </svg>
                     </button>
                 </div>
-                <div class="mt-6 flow-root">
-                    <div class="-my-6 divide-y divide-gray-500/10">
-                        <div class="space-y-2 py-6">
-                            <a href="#"
-                                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">Product</a>
-                            <a href="#"
-                                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">Features</a>
-                            <a href="#"
-                                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">Marketplace</a>
-                            <a href="#"
-                                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">Company</a>
-                        </div>
-                        <div class="py-6">
-                            <a href="#"
-                                class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-gray-900 hover:bg-gray-50">Log
-                                in</a>
-                        </div>
-                    </div>
+            </nav>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu"
+                class="hidden fixed inset-0 z-50 bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-lg font-bold text-gray-900">Logo Erasta</a>
+                    <button id="menu-close" class="text-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="mt-6">
+                    <a href="#" class="block py-2 text-gray-900 hover:bg-gray-100">Home</a>
+                    <a href="#about-us" class="block py-2 text-gray-900 hover:bg-gray-100">Tentang Kami</a>
+                    <a href="#jadwal" class="block py-2 text-gray-900 hover:bg-gray-100">Jadwal</a>
+                    <a href="#lokasi" class="block py-2 text-gray-900 hover:bg-gray-100">Lokasi</a>
+                    <a href="#daftar" class="block py-2 text-gray-900 hover:bg-gray-100">Cara Daftar</a>
+                </div>
+
+                <div class="mt-4">
+                    @if (Auth::check())
+                        <a href="{{ route('profile') }}"
+                            class="block py-2 text-gray-900 hover:bg-gray-100">Profile</a>
+                        <a href="{{ route('dashboard') }}"
+                            class="block py-2 text-gray-900 hover:bg-gray-100">Dashboard</a>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit"
+                                class="w-full text-left py-2 text-gray-900 hover:bg-gray-100">Logout</button>
+                        </form>
+                    @else
+                        <a href="{{ route('login') }}" class="block py-2 text-gray-900 hover:bg-gray-100">Login</a>
+                        <a href="{{ route('register') }}"
+                            class="block py-2 text-gray-900 hover:bg-gray-100">Register</a>
+                    @endif
                 </div>
             </div>
         </header>
+
         <div class=" bg-white font-inter">
 
 
@@ -346,7 +338,8 @@
                                         <div class="absolute bottom-0 bg-black/80 text-white text-center w-full py-2">
                                             <h3 class="text-lg font-bold">{{ $tempat->nama }}</h3>
                                             <p class="text-xs text-slate-400">{{ $tempat->alamat }}</p>
-                                            <p class="text-xs text-slate-500">Jam Operasional: {{ $tempat->jam_buka }} -
+                                            <p class="text-xs text-slate-500">Jam Operasional: {{ $tempat->jam_buka }}
+                                                -
                                                 {{ $tempat->jam_tutup }}</p>
                                         </div>
                                     </div>
@@ -650,6 +643,38 @@
                     };
 
                     updateCount();
+                });
+            });
+        </script>
+        <!-- Script untuk Dropdown & Mobile Menu -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const dropdownBtn = document.getElementById('dropdownNavbarLink');
+                const dropdownMenu = document.getElementById('dropdownNavbar');
+                const menuToggle = document.getElementById('menu-toggle');
+                const mobileMenu = document.getElementById('mobile-menu');
+                const menuClose = document.getElementById('menu-close');
+
+                // Dropdown Profile Toggle
+                dropdownBtn.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdownMenu.classList.toggle('hidden');
+                });
+
+                // Toggle Mobile Menu
+                menuToggle.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                menuClose.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                        dropdownMenu.classList.add('hidden');
+                    }
                 });
             });
         </script>
