@@ -4,8 +4,9 @@
 
 @section('content')
     <div class="sm:ml-64 bg-slate-00 p-6">
+              <h2 class="text-md  font-semibold text-gray-800 mb-4"><a href="{{ route('anggota') }}">User Management </a><i class="fa-solid fa-angle-right mx-3"></i>Edit User</h2>
         <div class="container mx-auto bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-xl font-semibold text-gray-800 mb-4">Edit User</h2>
+
 
             <form id="editUserForm" method="POST" action="{{ route('admin.users.update', $user->id) }}"
                 enctype="multipart/form-data">
@@ -17,18 +18,18 @@
                     <!-- Profil Image Preview -->
                     <div class="col-span-2 text-center">
                         <label for="profile"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Profil</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Profil Picture</label>
                         <input type="file" name="profile" id="profile" accept="image/*" class="hidden"
                             onchange="previewImage(event)">
 
                         <label for="profile" class="cursor-pointer">
                             <img id="profilePreview"
                                 src="{{ $user->profile ? asset('storage/' . $user->profile) : asset('img/profile/default.png') }}"
-                                alt="Profile Image" class="w-32 h-32 rounded-full mx-auto shadow-md border border-gray-300">
+                                alt="Profile Image" class=" w-40 h-40 rounded-md mx-auto   border-gray-300">
 
                         </label>
 
-                        <p class="text-sm text-gray-500 mt-2">Klik gambar untuk mengubah</p>
+                        <p class="text-xs text-slate-500 mt-2">Klik gambar untuk mengubah</p>
                     </div>
 
                     <!-- Nama -->

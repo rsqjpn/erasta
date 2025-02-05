@@ -6,12 +6,46 @@
     <div class="sm:ml-64 p-6">
         <div class="container mx-auto bg-white p-6 rounded-lg shadow-md">
             <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-semibold">Daftar Medali</h2>
+                <h2 class="text-md font-semibold">Daftar Medali</h2>
                 <button data-modal-target="medal-modal" data-modal-toggle="medal-modal"
-                    class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 text-sm">
+                    class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 text-xs">
                     Tambah Medali
                 </button>
             </div>
+            <div class="grid grid-cols-3 gap-4">
+                @foreach ($medals as $index => $medal)
+                    <div>
+
+                        <div
+                            class="max-w-sm bg-white p-2 border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                            <a href="#">
+                                <img class="rounded-t-lg w-1/3" src="{{ asset($medal->picture ?? 'img/medals/default.png') }}"
+                                    alt="" />
+                            </a>
+                            <div class="p-5">
+
+                                     <p class=" text-sm font-bold text-gray-700 py-2">{{ $medal->name }}</p>
+
+                                 <span
+                                    class="px-3 py-1 rounded-full text-xs font-semibold
+                                {{ $medal->type == 'gold' ? 'bg-yellow-400 text-white' : '' }}
+                                {{ $medal->type == 'silver' ? 'bg-gray-400 text-white' : '' }}
+                                {{ $medal->type == 'bronze' ? 'bg-orange-900 text-white' : '' }}">
+                                    {{ ucfirst($medal->type) }}
+                                </span>
+
+                            </div>
+                            <div class="mt-5">
+                                      <a href="{{ route('medals.edit', $medal->id) }}"
+                                    class="text-blue-100 bg-blue-600 px-3 py-1 rounded-md font-bold text-[0.80rem]">Edit</a>
+                                <button type="button" onclick="confirmDelete({{ $medal->id }})"
+                                    class="font-bold text-red-100 hover:underline rounded-md text-xs bg-red-800 px-4 py-1">Hapus</button>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
 
             <!-- Modal Tambah Medali -->
             <div id="medal-modal" tabindex="-1" aria-hidden="true"
@@ -62,50 +96,13 @@
             </div>
 
             <!-- Tabel Medali -->
-            <table class="w-full border-collapse border border-gray-200 mt-4 text-center">
-                <thead class="bg-gray-200">
-                    <tr>
-                        <th class="border px-4 py-2">No</th>
-                        <th class="border px-4 py-2">Gambar</th>
-                        <th class="border px-4 py-2">Nama</th>
-                        <th class="border px-4 py-2">Tipe</th>
-                        <th class="border px-4 py-2">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($medals as $index => $medal)
-                        <tr class="border">
-                            <td class="border px-4 py-2 text-sm font-bold text-gray-700">{{ $index + 1 }}</td>
-                            <td class="px-4 py-2 flex justify-center">
-                                <img src="{{ asset($medal->picture ?? 'img/medals/default.png') }}" alt="Medal Image"
-                                    class="w-12 h-12 rounded">
-                            </td>
-                            <td class="border px-4 text-sm font-bold text-gray-700 py-2">{{ $medal->name }}</td>
-                            <td class="border px-4 py-2">
-                                <span
-                                    class="px-3 py-1 rounded-full text-xs font-semibold
-                                {{ $medal->type == 'gold' ? 'bg-yellow-400 text-white' : '' }}
-                                {{ $medal->type == 'silver' ? 'bg-gray-400 text-white' : '' }}
-                                {{ $medal->type == 'bronze' ? 'bg-orange-900 text-white' : '' }}">
-                                    {{ ucfirst($medal->type) }}
-                                </span>
-                            </td>
-                            <td class="px-4 py-2">
-                                <a href="{{ route('medals.edit', $medal->id) }}"
-                                    class="text-blue-600 font-bold text-sm">Edit</a>
-                                <button type="button" onclick="confirmDelete({{ $medal->id }})"
-                                    class="font-bold text-red-600 hover:underline ml-3">Hapus</button>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+
         </div>
 
         <!-- Tabel Achievements -->
         <div class="container mx-auto bg-white p-6 rounded-lg shadow-md mt-10">
             <div class="flex items-center justify-between pb-4">
-                <h2 class="text-xl font-semibold text-gray-800">User Achiement Medal</h2>
+                <h2 class="text-md font-semibold text-gray-800">User Achiement Medal</h2>
 
                 <!-- Modal toggle -->
                 <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
@@ -229,9 +226,9 @@
                 <tbody>
                     @forelse ($achievements as $index => $achievement)
                         <tr class="border">
-                           <td class="border px-4 py-2 text-sm font-bold text-gray-700">
-    {{ $loop->iteration }}
-</td>
+                            <td class="border px-4 py-2 text-sm font-bold text-gray-700">
+                                {{ $loop->iteration }}
+                            </td>
 
                             <td class="border px-4 py-2">{{ $achievement->user->username }}</td>
                             <td class="border px-4 py-2">
@@ -246,8 +243,7 @@
                             <td class="border px-4 py-2">{{ $achievement->created_at->format('d M Y') }}</td>
                             <td class="border px-4 py-2">{{ $achievement->deskripsi }}</td>
                             <td class="border px-4 py-2">
-                                <form action="" method="POST"
-                                    onsubmit="return confirm('Yakin ingin menghapus?')">
+                                <form action="" method="POST" onsubmit="return confirm('Yakin ingin menghapus?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-600 hover:underline">

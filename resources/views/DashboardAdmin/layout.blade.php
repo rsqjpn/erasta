@@ -49,9 +49,7 @@
                             </svg>
                         </button>
                         <a href="https://flowbite.com" class="flex ms-2 md:me-24">
-                            <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
-                            <span
-                                class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Flowbite</span>
+
                         </a>
                     </div>
                     <div class="flex items-center">
@@ -82,7 +80,7 @@
 
                                     <li>
                                         <a href="#"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark: dark:hover:text-white"
                                             role="menuitem">Sign out</a>
                                     </li>
                                 </ul>
@@ -94,7 +92,7 @@
         </nav>
 
         <aside id="logo-sidebar"
-            class="fixed top-0 left-0 z-40 w-64 h-screen shadow-lg pt-20 transition-transform -translate-x-full bg-slate-200 border-r border-gray-300 sm:translate-x-0 dark:bg-gray-900 dark:border-gray-700"
+            class="fixed top-0 left-0 z-40 w-64 h-screen  pt-20 transition-transform -translate-x-full bg-red-900 shadow-2xl border-r border-gray-300 sm:translate-x-0 dark:bg-gray-900 dark:border-gray-700"
             aria-label="Sidebar">
             <div class="h-full px-3 pb-4 overflow-y-auto">
                 <ul class="space-y-2 font-medium">
@@ -102,9 +100,9 @@
                     <!-- Dashboard -->
                     <li>
                         <a href="{{ route('admin.users.index') }}"
-                            class="flex items-center p-2 text-gray-800 rounded-lg
-                    {{ Request::routeIs('admin.users.index') ? 'bg-blue-600 text-white' : 'hover:bg-gray-300 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white' }}">
-                            <i class="fas fa-home text-gray-800 dark:text-white"></i>
+                            class="flex items-center p-2 text-slate-100 text-sm rounded-lg
+                    {{ Request::routeIs('admin.users.index') ? 'bg-slate-400 text-white' : ' hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white' }}">
+                            <i class="fas fa-home  font-bold"></i>
                             <span class="ms-3 font-bold">Dashboard</span>
                         </a>
                     </li>
@@ -112,25 +110,25 @@
                     <!-- User Management -->
                     <li>
                         <button type="button"
-                            class="flex items-center w-full p-2 rounded-lg text-gray-800 dark:text-white
-                    hover:bg-gray-300 dark:hover:bg-gray-700"
+                            class="flex items-center w-full p-2 rounded-lg text-gray-100 text-sm dark:text-white
+                     dark:hover:bg-gray-700"
                             onclick="toggleDropdown('dropdown-users')" data-dropdown="dropdown-users">
-                            <i class="fas fa-users text-gray-800 dark:text-white"></i>
+                            <i class="fas fa-users text-gray-100 dark:text-white"></i>
                             <span class="mr-2 ms-3 font-bold">User Management</span>
                             <i class="fas fa-chevron-down ml-auto"></i>
                         </button>
                         <ul id="dropdown-users" class="py-2 space-y-2 hidden">
                             <li>
                                 <a href="{{ route('anggota') }}"
-                                    class="flex font-bold items-center w-full p-2 pl-11 rounded-lg text-gray-800 dark:text-white
-                            {{ Request::routeIs('anggota') ? 'bg-blue-600 text-white' : 'hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+                                    class="flex font-bold items-center w-full p-2 pl-11 rounded-lg text-gray-200 text-sm dark:text-white
+                            {{ Request::routeIs('anggota') || Request::routeIs('edit.anggota')   ? 'bg-slate-400 text-white' : ' dark:hover:bg-gray-700' }}">
                                   <i class="fa-solid fa-users-line mr-2"></i> Data Anggota
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('pelatih.index') }}"
-                                    class="flex font-bold items-center w-full p-2 pl-11 rounded-lg text-gray-800 dark:text-white
-                            {{ Request::routeIs('pelatih.index') ? 'bg-blue-600 text-white' : 'hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+                                    class="flex font-bold items-center w-full p-2 pl-11 rounded-lg text-gray-200 text-sm dark:text-white
+                            {{ Request::routeIs('pelatih.index') ? 'bg-slate-400 text-white' : ' dark:hover:bg-gray-700' }}">
                                     <i class="fa-solid fa-user-ninja mr-2"></i>Data Pelatih
                                 </a>
                             </li>
@@ -141,9 +139,9 @@
                     <!-- Achievement -->
                     <li>
                         <button type="button"
-                            class="flex items-center w-full p-2 rounded-lg text-gray-800 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700"
+                            class="flex items-center w-full p-2 rounded-lg text-gray-200 text-sm dark:text-white  dark:hover:bg-gray-700"
                             onclick="toggleDropdown('dropdown-achievement')" data-dropdown="dropdown-achievement">
-                            <i class="fas fa-trophy text-gray-800 dark:text-white"></i>
+                            <i class="fas fa-trophy text-gray-200 text-sm dark:text-white"></i>
                             <span class="mr-2 ms-3 font-bold">Achievement</span>
                             <i class="fas fa-chevron-down ml-auto"></i>
                         </button>
@@ -152,15 +150,15 @@
                         <ul id="dropdown-achievement" class="py-2 space-y-2 hidden">
                             <li>
                                 <a href="{{ route('medals.index') }}"
-                                    class="flex font-bold items-center w-full p-2 pl-11 rounded-lg text-gray-800 dark:text-white
-                {{ Request::routeIs('medals.index') ? 'bg-blue-600 text-white' : 'hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+                                    class="flex font-bold items-center w-full p-2 pl-11 rounded-lg text-gray-200 text-sm dark:text-white
+                {{ Request::routeIs('medals.index') ? 'bg-slate-400 text-white' : ' dark:hover:bg-gray-700' }}">
                                     <i class="fa-solid fa-medal mr-2 "></i>Medali
                                 </a>
                             </li>
                             <li>
                                 <a href=""
-                                    class="flex font-bold items-center w-full p-2 pl-11 rounded-lg text-gray-800 dark:text-white
-                {{ Request::routeIs('baru.route') ? 'bg-blue-600 text-white' : 'hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+                                    class="flex font-bold items-center w-full p-2 pl-11 rounded-lg text-gray-200 text-sm dark:text-white
+                {{ Request::routeIs('baru.route') ? 'bg-slate-400 text-white' : ' dark:hover:bg-gray-700' }}">
                                     <i class="fa-solid fa-file-lines mr-2"></i>Piagam
                                 </a>
                             </li>
@@ -169,9 +167,9 @@
                     {{-- general --}}
                       <li>
                         <button type="button"
-                            class="flex items-center w-full p-2 rounded-lg text-gray-800 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700"
+                            class="flex items-center w-full p-2 rounded-lg text-gray-200 text-sm dark:text-white  dark:hover:bg-gray-700"
                             onclick="toggleDropdown('dropdown-general')" data-dropdown="dropdown-general">
-                            <i class="fas fa-gear text-gray-800 dark:text-white"></i>
+                            <i class="fas fa-gear text-gray-200 text-sm dark:text-white"></i>
                             <span class="mr-2 ms-3 font-bold">General</span>
                             <i class="fas fa-chevron-down ml-auto"></i>
                         </button>
@@ -180,15 +178,15 @@
                         <ul id="dropdown-general" class="py-2 space-y-2 hidden">
                             <li>
                                 <a href="{{ route('location.index') }}"
-                                    class="flex font-bold items-center w-full p-2 pl-11 rounded-lg text-gray-800 dark:text-white
-                {{ Request::routeIs('location.index') ? 'bg-blue-600 text-white' : 'hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+                                    class="flex font-bold items-center w-full p-2 pl-11 rounded-lg text-gray-200 text-sm dark:text-white
+                {{ Request::routeIs('location.index') ? 'bg-slate-400 text-white' : ' dark:hover:bg-gray-700' }}">
                                     <i class="fa-solid fa-location-dot mr-2 "></i>Tempat Latihan
                                 </a>
                             </li>
                             <li>
                                 <a href=""
-                                    class="flex font-bold items-center w-full p-2 pl-11 rounded-lg text-gray-800 dark:text-white
-                {{ Request::routeIs('baru.route') ? 'bg-blue-600 text-white' : 'hover:bg-gray-300 dark:hover:bg-gray-700' }}">
+                                    class="flex font-bold items-center w-full p-2 pl-11 rounded-lg text-gray-200 text-sm dark:text-white
+                {{ Request::routeIs('baru.route') ? 'bg-slate-400 text-white' : ' dark:hover:bg-gray-700' }}">
                                     <i class="fa-regular fa-calendar-days mr-2"></i>Jadwal Latihan
                                 </a>
                             </li>
@@ -201,8 +199,8 @@
                     <!-- Sign Out -->
                     <li>
                         <a href="#"
-                            class="flex items-center p-2 mt-3 text-gray-800 dark:text-white rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700">
-                            <i class="fas fa-sign-out-alt text-gray-800 dark:text-white"></i>
+                            class="flex items-center p-2 mt-3 text-gray-200 text-sm dark:text-white rounded-lg  dark:hover:bg-gray-700">
+                            <i class="fas fa-sign-out-alt text-gray-200 text-sm dark:text-white"></i>
                             <span class="flex-1 ms-3 whitespace-nowrap">Sign Out</span>
                         </a>
                     </li>
@@ -218,7 +216,7 @@
 
         <div class="p-4 ">
             <!-- Main Content -->
-            <main class="container mx-auto px-4 py-10 font-inter">
+            <main class="container mx-auto px-4 py-10 font-inter ">
                 @yield('content')
             </main>
 

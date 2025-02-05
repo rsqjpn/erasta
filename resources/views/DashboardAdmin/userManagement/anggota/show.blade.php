@@ -8,11 +8,11 @@
 
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white p-4">
                 <div class="flex items-center justify-between pb-4">
-                    <h2 class="text-xl font-semibold text-gray-800">User</h2>
+                    <h2 class="text-xl font-semibold text-gray-800">Data Anggota</h2>
 
                     <!-- Modal toggle -->
                     <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
-                        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        class="block text-slate-200 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         type="button">
                         Tambah User <i class="fa-solid fa-plus ml-2"></i>
                     </button>
