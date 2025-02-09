@@ -31,7 +31,7 @@ Route::get('/daftar', function () {
 
 
 
-
+Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('admin.users.index');
     Route::get('/users/create', [UserController::class, 'create'])->name('admin.users.create');
     Route::post('/users', [UserController::class, 'store'])->name('admin.users.store');
@@ -62,7 +62,7 @@ Route::get('/daftar', function () {
     Route::post('/location/store', [TempatLatihanController::class, 'store'])->name('location.store');
     Route::delete('/location/destroy/{id}', [TempatLatihanController::class, 'destroy'])->name('location.destroy');
 
-
+});
 
 
 
