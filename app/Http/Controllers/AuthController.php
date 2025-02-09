@@ -43,7 +43,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('guest')->with('success', 'Registrasi berhasil!');
+        return redirect()->route('login')->with('success', 'Registrasi berhasil!');
     }
 
     // LOGIN USER
