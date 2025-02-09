@@ -28,10 +28,10 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
 
-    <body class=" font-poppins bg-main-0">
+    <body class=" font-inter bg-white">
         <!-- Navbar -->
         <nav id="navbar"
-            class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-2 bg-main-0 border-b-2 border-slate-200 transition-all duration-300"
+            class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-2 bg-white border-b-2 border-slate-200 transition-all duration-300"
             aria-label="Global">
             <!-- Logo -->
             <div class="flex items-center">
@@ -49,11 +49,7 @@
                                 alt="Profile">
 
                         </div>
-                        <svg class="w-4 h-4 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4" />
-                        </svg>
+                        <i class="fa-solid fa-chevron-down px-1"></i>
                     </button>
 
                     <!-- Dropdown menu -->
@@ -70,7 +66,7 @@
 
         <!-- Main Content -->
         <main class="container mx-auto px-4 py-20 font-inter">
-            <section class="w-full md:max-w-2xl mx-auto bg-sec-0 rounded-lg p-6">
+            <section class="w-full md:max-w-2xl mx-auto bg-red-950 rounded-lg p-6">
                 <div class="flex gap-1  md:gap-5 items-start">
                     <img class="md:w-40 w-24 h-24 md:h-40 rounded-full object-cover border-1"
                         src="{{ $user->profile ? asset('storage/' . $user->profile) : 'https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg' }}"
@@ -85,32 +81,61 @@
                     <h1 class=" font-bold md:text-md border-b-2 w-full mt-4">Dashboard User</h1>
                 </div>
             </section>
-            <section class="w-full md:max-w-5xl mx-auto px-6 py-6 mt-5">
+            <section class="w-full max-w-5xl mx-auto px-4 py-6">
                 <!-- Grid Layout -->
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <!-- Item Navigasi -->
+                    <a href="#"
+                        class="items-center bg-white border h-fit border-gray-200 rounded-lg shadow-sm transition-all hover:shadow-md hover:bg-gray-100">
+                        <div class="p-4 flex  items-center gap-3">
+                            <i class="fa-solid fa-home bg-slate-400 rounded-md text-white text-2xl p-3"></i>
+                            <div>
+                                <h5 class=" text-md font-semibold text-slate-700">Home</h5>
+                                <p class=" text-xs text-slate-400">Dashboard User</p>
+                            </div>
+                        </div>
+                    </a>
 
                     <!-- Item Navigasi -->
                     <a href="#"
-                        class=" items-center p-4 bg-white border border-gray-200 rounded-lg shadow-sm transition-all hover:shadow-md hover:bg-gray-100">
-                        <div class="p-3 rounded-lg bg-orange-500">
-                            <i class="fa-regular fa-calendar-days text-white text-2xl"></i>
+                        class="items-center bg-white border h-fit border-gray-200 rounded-lg shadow-sm transition-all hover:shadow-md hover:bg-gray-100">
+                        <div class="p-4 flex  items-center gap-3">
+                            <i class="fa-regular fa-calendar-days bg-orange-400 rounded-md text-white text-2xl p-3"></i>
+                            <div>
+                                <h5 class=" text-md font-semibold text-slate-700">Jadwal</h5>
+                                <p class=" text-xs text-slate-400">Atur Jadwal Latihanmu</p>
+                            </div>
                         </div>
-                        <h5 class="mt-3 text-lg font-semibold text-gray-900">Jadwal</h5>
                     </a>
 
-
+                    <!-- Item Navigasi -->
                     <a href="#"
-                        class="flex flex-col items-center p-4 bg-white border border-gray-200 rounded-lg shadow-sm transition-all hover:shadow-md hover:bg-gray-100">
-                        <div class="p-3 rounded-lg bg-blue-100">
-                            <img src="https://img.icons8.com/ios/50/000000/upload.png" class="w-10 h-10"
-                                alt="Common Bulk Uploads">
+                        class="items-center bg-white border h-fit border-gray-200 rounded-lg shadow-sm transition-all hover:shadow-md hover:bg-gray-100">
+                        <div class="p-4 flex  items-center gap-3">
+                            <i class="fa-regular fa-user bg-sky-400 rounded-md text-white text-2xl p-3"></i>
+                            <div>
+                                <h5 class=" text-md font-semibold text-slate-700">Profil</h5>
+                                <p class=" text-xs text-slate-400">Identitas Anggota</p>
+                            </div>
                         </div>
-                        <h5 class="mt-3 text-lg font-semibold text-gray-900">Common Bulk Uploads</h5>
-                        <p class="text-sm text-gray-600 text-center">Bulk Uploads</p>
                     </a>
+
+                    <!-- Item Navigasi -->
+                    <a href="#"
+                        class="items-center bg-white border h-fit border-gray-200 rounded-lg shadow-sm transition-all hover:shadow-md hover:bg-gray-100">
+                        <div class="p-4 flex  items-center gap-3">
+                            <i class="fa-solid fa-medal bg-teal-400 rounded-md text-white text-2xl p-3"></i>
+                            <div>
+                                <h5 class=" text-md font-semibold text-slate-700">Piagam</h5>
+                                <p class=" text-xs text-slate-400">Penghargaan dan Medali</p>
+                            </div>
+                        </div>
+                    </a>
+
 
                 </div>
             </section>
+
 
         </main>
 
@@ -119,7 +144,7 @@
         <div class="fixed bottom-6 right-6 z-50">
             <!-- Toggle Button -->
             <button id="floatingToggle"
-                class="p-4 bg-sec-0 rounded-full shadow-lg text-white  focus:outline-none transition-transform">
+                class="p-2 bg-sec-0 rounded-full shadow-lg text-white  focus:outline-none transition-transform">
                 <!-- Default Arrow Down -->
                 <svg id="arrowDown" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                     stroke-width="2" stroke="currentColor" class="w-6 h-6">
@@ -134,41 +159,44 @@
 
             <!-- Floating Navigation Panel -->
             <div id="floatingPanel"
-                class="hidden fixed bottom-16 right-6 w-64 p-4 bg-white rounded-lg shadow-lg border border-gray-200">
-                <h4 class="text-lg font-semibold text-gray-700 mb-4">Quick Navigation</h4>
-                <ul class="space-y-3">
+                class="hidden fixed bottom-16 right-2 w-fit p-4 bg-none bg-opacity-70 bg-slate-200 rounded-md animate-fade-in">
+                <ul class="space-y-2">
                     <li>
-                        <a href="#section1"
-                            class="flex items-center p-2 bg-blue-50 rounded-md hover:bg-blue-100 transition">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="2" stroke="currentColor" class="w-5 h-5 text-blue-600">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                            </svg>
-                            <span class="ml-3 text-sm font-medium text-gray-700">Go to Section 1</span>
+                        <a href="#"
+                            class="items-center border border-gray-200 rounded-lg shadow-sm transition-all hover:shadow-md hover:bg-gray-100">
+                            <div class="flex items-center">
+                                <i class="fa-solid fa-home bg-slate-400 rounded-md text-white text-md p-3"></i>
+                            </div>
                         </a>
                     </li>
                     <li>
-                        <a href="#section2"
-                            class="flex items-center p-2 bg-blue-50 rounded-md hover:bg-blue-100 transition">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="2" stroke="currentColor" class="w-5 h-5 text-blue-600">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                            </svg>
-                            <span class="ml-3 text-sm font-medium text-gray-700">Go to Section 2</span>
+                        <a href="#"
+                            class="items-center border border-gray-200 rounded-lg shadow-sm transition-all hover:shadow-md hover:bg-gray-100">
+                            <div class="flex items-center">
+                                <i
+                                    class="fa-regular fa-calendar-days bg-orange-400 rounded-md text-white text-md p-3"></i>
+                            </div>
                         </a>
                     </li>
                     <li>
-                        <a href="#section3"
-                            class="flex items-center p-2 bg-blue-50 rounded-md hover:bg-blue-100 transition">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="2" stroke="currentColor" class="w-5 h-5 text-blue-600">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                            </svg>
-                            <span class="ml-3 text-sm font-medium text-gray-700">Go to Section 3</span>
+                        <a href="#"
+                            class="items-center border border-gray-200 rounded-lg shadow-sm transition-all hover:shadow-md hover:bg-gray-100">
+                            <div class="flex items-center">
+                                <i class="fa-regular fa-user bg-sky-400 rounded-md text-white text-md p-3"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="items-center border border-gray-200 rounded-lg shadow-sm transition-all hover:shadow-md hover:bg-gray-100">
+                            <div class="flex items-center">
+                                <i class="fa-solid fa-medal bg-teal-400 rounded-md text-white text-md p-3"></i>
+                            </div>
                         </a>
                     </li>
                 </ul>
             </div>
+
         </div>
 
 
