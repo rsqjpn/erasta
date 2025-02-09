@@ -1,0 +1,17 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-2c769984.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-4ed993c7.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  },
+  "resources/js/calendar.js": {
+    "file": "assets/calendar-eb5d4dc9.js",
+    "isEntry": true,
+    "src": "resources/js/calendar.js"
+  }
+}
