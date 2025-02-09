@@ -110,7 +110,7 @@
                     </div>
                     <div class="flex justify-center my-5">
 
-                        <a href="" class=" mx-auto text-center text-xs text-slate-500 "> belum punya akun? <span
+                        <a href="{{ route('showregister') }}" class=" mx-auto text-center text-xs text-slate-500 "> belum punya akun? <span
                                 class=" text-sky-500">register</span></a>
                     </div>
 
