@@ -161,7 +161,7 @@
                     <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-5">
                         <h1
                             class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-red-600">
-                            Erasta Taekwondo Club
+                            Erasta Taekwondo testing
                         </h1>
                         <p class="mt-8 text-lg font-medium text-gray-200 sm:text-xl">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam dicta consectetur aspernatur
@@ -508,7 +508,7 @@
                         <div>
                             <h2 class="mb-6 text-sm font-semibold text-slate-500 uppercase dark:text-white">
                                 Resources</h2>
-                           
+
                         </div>
                         <div>
                             <h2 class="mb-6 text-sm font-semibold text-slate-500 uppercase dark:text-white">
