@@ -19,6 +19,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 
 
@@ -144,8 +145,9 @@
                 }
             }
         </script>
-        <script>
-             // Success Alert after Action
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // Success Alert after Action
         @if (session('success'))
             Swal.fire({
                 icon: 'success',
@@ -155,7 +157,7 @@
                 timer: 2000
             });
         @endif
-        </script>
+    </script>
 
     </body>
 
