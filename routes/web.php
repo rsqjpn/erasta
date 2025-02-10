@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PelatihController;
 use App\Http\Controllers\Admin\MedalsController;
 use App\Http\Controllers\Admin\TempatLatihanController;
-
+use App\Http\Controllers\DashboardUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,15 +81,17 @@ Route::get('/dashboard', function () {
 
 // users route
 Route::prefix('users')->group(function () {
-    Route::get('/', [UsersController::class, 'index']); // Ambil semua user
-    Route::get('/edit', [UsersController::class, 'edit'])->name('edit');
-    Route::get('/{id}', [UsersController::class, 'show']); // Ambil user berdasarkan ID
-    Route::post('/', [UsersController::class, 'store']); // Tambah user baru
+    Route::get('/', [UsersController::class, 'index'])->name('user.index');
+    Route::get('/edit', [UsersController::class, 'edit'])->name('user.edit');
+    Route::get('/{id}', [UsersController::class, 'show'])->name('user.show');
+    Route::post('/', [UsersController::class, 'store']);
     Route::put('/{id}', [UsersController::class, 'update']);
-    Route::delete('/{id}', [UsersController::class, 'destroy']); // Hapus user
-});
-Route::middleware('auth')->get('/profile', [UsersController::class, 'profile'])->name('profile');
+    Route::delete('/{id}', [UsersController::class, 'destroy']);
 
+
+});
+
+Route::middleware('auth')->get('/dashboard', [UsersController::class, 'dashboard'])->name('dashboard.user');
 
 Route::get('/events', function () {
     return response()->json([
@@ -99,3 +101,9 @@ Route::get('/events', function () {
         ['id' => 4, 'title' => 'Latihan Intensif', 'start' => '2025-01-20', 'color' => '#facc15'], // Kuning
     ]);
 });
+
+
+    Route::get('/dashboard', [DashboardUserController::class, 'dashboard'])->name('user.dashboard');
+    Route::get('/profile', [DashboardUserController::class, 'profile'])->name('user.profile');
+    // Route::get('/scedule', [DashboardUserController::class, 'index'])->name('user.scedule');
+    // Route::get('/dashboard', [DashboardUserController::class, 'index'])->name('user.dashboard');

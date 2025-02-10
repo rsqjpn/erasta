@@ -67,11 +67,9 @@
                             class="hidden absolute right-0 mt-2 w-44 bg-white divide-y divide-gray-200 rounded-lg shadow-lg">
                             <ul class="py-2 text-sm text-gray-700">
                                 @if (Auth::check())
-                                    <li><a href="{{ route('profile') }}"
-                                            class="block px-4 py-2 hover:bg-gray-100">Profile</a></li>
-                                    <li><a href="{{ route('dashboard') }}"
-                                            class="block px-4 py-2 hover:bg-gray-100">Dashboard</a></li>
-                                    <li>
+                                    <li><a href="{{ route('user.dashboard') }}"
+                                            class="block px-4 py-2 hover:bg-gray-100">Dashboard Profile</a></li>
+
                                         <form action="{{ route('logout') }}" method="POST">
                                             @csrf
                                             <button type="submit"
@@ -123,10 +121,9 @@
 
                 <div class="mt-4">
                     @if (Auth::check())
-                        <a href="{{ route('profile') }}"
-                            class="block py-2 text-gray-900 hover:bg-gray-100">Profile</a>
-                        <a href="{{ route('dashboard') }}"
-                            class="block py-2 text-gray-900 hover:bg-gray-100">Dashboard</a>
+                        <a href="{{ route('user.dashboard') }}"
+                            class="block py-2 text-gray-900 hover:bg-gray-100">Dashboard Profile</a>
+
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button type="submit"

@@ -38,6 +38,18 @@ class UsersController extends Controller
         // Ambil user dengan relasi achievements dan medal
         $user = Users::with('achievements.medal')->where('id', $user->id)->firstOrFail();
 
+        return view('DashboardUser.user.piagam', compact('user'));
+    }
+    public function dashboard(){
+        $user = Auth::user(); // Ambil user yang sedang login
+
+        if (!$user) {
+            return redirect()->route('login')->withErrors(['message' => 'Silakan login terlebih dahulu']);
+        }
+
+        // Ambil user dengan relasi achievements dan medal
+        $user = Users::with('achievements.medal')->where('id', $user->id)->firstOrFail();
+
         return view('DashboardUser.user.index', compact('user'));
     }
 
@@ -124,3 +136,5 @@ class UsersController extends Controller
         return response()->json(['message' => 'User deleted successfully'], 200);
     }
 }
+
+
