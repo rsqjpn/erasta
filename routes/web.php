@@ -10,6 +10,10 @@ use App\Http\Controllers\Admin\PelatihController;
 use App\Http\Controllers\Admin\MedalsController;
 use App\Http\Controllers\Admin\TempatLatihanController;
 use App\Http\Controllers\DashboardUserController;
+use App\Http\Controllers\Auth\GoogleController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -61,7 +65,6 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::put('/location/update/{id}', [TempatLatihanController::class, 'update'])->name('location.update');
     Route::post('/location/store', [TempatLatihanController::class, 'store'])->name('location.store');
     Route::delete('/location/destroy/{id}', [TempatLatihanController::class, 'destroy'])->name('location.destroy');
-
 });
 
 
@@ -87,23 +90,26 @@ Route::prefix('users')->group(function () {
     Route::post('/', [UsersController::class, 'store']);
     Route::put('/{id}', [UsersController::class, 'update']);
     Route::delete('/{id}', [UsersController::class, 'destroy']);
-
-
 });
 
 Route::middleware('auth')->get('/dashboard', [UsersController::class, 'dashboard'])->name('dashboard.user');
 
-Route::get('/events', function () {
-    return response()->json([
-        ['id' => 1, 'title' => 'Latihan Pemula', 'start' => '2025-01-05', 'color' => '#3b82f6'], // Biru
-        ['id' => 2, 'title' => 'Latihan Lanjutan', 'start' => '2025-01-08', 'color' => '#22c55e'], // Hijau
-        ['id' => 3, 'title' => 'Latihan Kompetisi', 'start' => '2025-01-15', 'color' => '#ef4444'], // Merah
-        ['id' => 4, 'title' => 'Latihan Intensif', 'start' => '2025-01-20', 'color' => '#facc15'], // Kuning
-    ]);
-});
+// Route::get('/events', function () {
+//     return response()->json([
+//         ['id' => 1, 'title' => 'Latihan Pemula', 'start' => '2025-01-05', 'color' => '#3b82f6'], // Biru
+//         ['id' => 2, 'title' => 'Latihan Lanjutan', 'start' => '2025-01-08', 'color' => '#22c55e'], // Hijau
+//         ['id' => 3, 'title' => 'Latihan Kompetisi', 'start' => '2025-01-15', 'color' => '#ef4444'], // Merah
+//         ['id' => 4, 'title' => 'Latihan Intensif', 'start' => '2025-01-20', 'color' => '#facc15'], // Kuning
+//     ]);
+// });
 
+
+
+
+Route::middleware(['auth'])->group(function () {
 
     Route::get('/dashboard', [DashboardUserController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/profile', [DashboardUserController::class, 'profile'])->name('user.profile');
-    // Route::get('/scedule', [DashboardUserController::class, 'index'])->name('user.scedule');
-    // Route::get('/dashboard', [DashboardUserController::class, 'index'])->name('user.dashboard');
+    Route::get('/scedule', [DashboardUserController::class, 'scedule'])->name('user.scedule');
+    Route::get('/achieve', [DashboardUserController::class, 'achieve'])->name('user.achieve');
+});

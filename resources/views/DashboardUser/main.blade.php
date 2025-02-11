@@ -98,7 +98,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{ route('user.scedule') }}"
                             class="items-center border border-gray-200 rounded-lg shadow-sm transition-all hover:shadow-md hover:bg-gray-100">
                             <div class="flex items-center">
                                 <i
@@ -115,7 +115,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{ route('user.achieve') }}"
                             class="items-center border border-gray-200 rounded-lg shadow-sm transition-all hover:shadow-md hover:bg-gray-100">
                             <div class="flex items-center">
                                 <i class="fa-solid fa-medal bg-teal-400 rounded-md text-white text-md p-3"></i>

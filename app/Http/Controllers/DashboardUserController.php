@@ -12,7 +12,7 @@ class DashboardUserController extends Controller
 {
     public function dashboard(){
         $user = Auth::user();
-        return view('dashboardUser.user.index', compact('user'));
+        return view('DashboardUser.user.dashboard', compact('user'));
     }
     public function profile()
     {
@@ -27,4 +27,15 @@ class DashboardUserController extends Controller
 
         return view('DashboardUser.user.profile', compact('user'));
     }
+    public function scedule(){
+
+    }
+    public function achieve(){
+        $user = Auth::user();
+        $user = Users::with('achievements.medal')->where('id', $user->id)->firstOrFail();
+
+        return view('DashboardUser.user.piagam', compact('user'));
+
+    }
+
 }

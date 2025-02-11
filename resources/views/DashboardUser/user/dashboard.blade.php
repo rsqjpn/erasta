@@ -25,7 +25,7 @@
                 <!-- Grid Layout -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     <!-- Item Navigasi -->
-                    <a href="#"
+                    <a href="{{ route('user.dashboard') }}"
                         class="items-center bg-white border h-fit border-gray-200 rounded-lg shadow-sm transition-all hover:shadow-md hover:bg-gray-100">
                         <div class="p-4 flex  items-center gap-3">
                             <i class="fa-solid fa-home bg-slate-400 rounded-md text-white text-2xl p-3"></i>
@@ -37,7 +37,7 @@
                     </a>
 
                     <!-- Item Navigasi -->
-                    <a href="#"
+                    <a href="{{ route('user.scedule') }}"
                         class="items-center bg-white border h-fit border-gray-200 rounded-lg shadow-sm transition-all hover:shadow-md hover:bg-gray-100">
                         <div class="p-4 flex  items-center gap-3">
                             <i class="fa-regular fa-calendar-days bg-orange-400 rounded-md text-white text-2xl p-3"></i>
@@ -49,7 +49,7 @@
                     </a>
 
                     <!-- Item Navigasi -->
-                    <a href="#"
+                    <a href="{{ route('user.profile') }}"
                         class="items-center bg-white border h-fit border-gray-200 rounded-lg shadow-sm transition-all hover:shadow-md hover:bg-gray-100">
                         <div class="p-4 flex  items-center gap-3">
                             <i class="fa-regular fa-user bg-sky-400 rounded-md text-white text-2xl p-3"></i>
@@ -61,7 +61,7 @@
                     </a>
 
                     <!-- Item Navigasi -->
-                    <a href="#"
+                    <a href="{{ route('user.achieve') }}"
                         class="items-center bg-white border h-fit border-gray-200 rounded-lg shadow-sm transition-all hover:shadow-md hover:bg-gray-100">
                         <div class="p-4 flex  items-center gap-3">
                             <i class="fa-solid fa-medal bg-teal-400 rounded-md text-white text-2xl p-3"></i>

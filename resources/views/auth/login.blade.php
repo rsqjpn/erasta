@@ -19,7 +19,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 
 
@@ -40,7 +40,7 @@
                             class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Username</label>
                     </div>
                     <div class="relative mb-8">
-                        <input type="password" id="password"  name="password"
+                        <input type="password" id="password" name="password"
                             class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" " />
                         <label for="password"
@@ -83,13 +83,17 @@
                             class=" text-sm font-bold px-4 py-2 w-full text-white rounded-md bg-red-900">Sign
                             in</button>
                     </div>
-                    <a href="" class=" text-center text-xs  text-slate-500">forgot pasword?</a>
-                    <div class="inline-flex items-center justify-center w-full">
-                        <hr class="w-64 h-px my-8 bg-gray-400 border-0 dark:bg-gray-700">
-                        <span
-                            class="absolute px-3 font-medium text-xs text-gray-600 -translate-x-1/2 bg-white left-1/2 dark:text-white dark:bg-gray-900">atau</span>
-                    </div>
-                    <div class="flex items-center">
+                </form>
+                <a href="" class=" text-center text-xs  text-slate-500">forgot pasword?</a>
+                <div class="inline-flex items-center justify-center w-full">
+                    <hr class="w-64 h-px my-8 bg-gray-400 border-0 dark:bg-gray-700">
+                    <span
+                        class="absolute px-3 font-medium text-xs text-gray-600 -translate-x-1/2 bg-white left-1/2 dark:text-white dark:bg-gray-900">atau</span>
+                </div>
+                <div class="flex items-center">
+                    <a href="">
+
+
                         <button
                             class="flex items-center justify-center text-xs font-bold px-4 py-2 mx-auto text-slate-600 border border-gray-200 rounded-xl ">
                             <svg width="20px" class="mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
@@ -108,14 +112,15 @@
                             </svg>
                             Lanjut dengan Google
                         </button>
-                    </div>
-                    <div class="flex justify-center my-5">
+                    </a>
+                </div>
+                <div class="flex justify-center my-5">
 
-                        <a href="{{ route('showregister') }}" class=" mx-auto text-center text-xs text-slate-500 "> belum punya akun? <span
-                                class=" text-sky-500">register</span></a>
-                    </div>
+                    <a href="{{ route('showregister') }}" class=" mx-auto text-center text-xs text-slate-500 "> belum
+                        punya akun? <span class=" text-sky-500">register</span></a>
+                </div>
 
-                </form>
+
 
             </div>
         </main>
@@ -145,19 +150,19 @@
                 }
             }
         </script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        // Success Alert after Action
-        @if (session('success'))
-            Swal.fire({
-                icon: 'success',
-                title: 'Berhasil!',
-                text: "{{ session('success') }}",
-                showConfirmButton: false,
-                timer: 2000
-            });
-        @endif
-    </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            // Success Alert after Action
+            @if (session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: "{{ session('success') }}",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            @endif
+        </script>
 
     </body>
 
