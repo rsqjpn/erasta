@@ -56,7 +56,13 @@
                     <div id="dropdownNavbar"
                         class="hidden absolute right-0 mt-2 w-44 bg-white divide-y divide-gray-200 rounded-lg shadow-lg">
                         <ul class="py-2 text-sm text-gray-700">
-                            <li><a href="{{ route('logout') }}" class="block px-4 py-2 hover:bg-gray-100">Logout</a>
+                            <li><form action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                            <button type="submit"
+                                                class="block w-full text-left px-4 py-2 hover:bg-gray-100">
+                                                Logout
+                                            </button>
+                                        </form>
                             </li>
                         </ul>
                     </div>

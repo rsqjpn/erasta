@@ -28,7 +28,10 @@ class DashboardUserController extends Controller
         return view('DashboardUser.user.profile', compact('user'));
     }
     public function scedule(){
+        $user = Auth::user();
+        $user = Users::with('achievements.medal')->where('id', $user->id)->firstOrFail();
 
+        return view('DashboardUser.user.schedule', compact('user'));
     }
     public function achieve(){
         $user = Auth::user();

@@ -23,4 +23,8 @@ class Pelatih extends Model
     {
         return $this->belongsTo(Users::class, 'user_id');
     }
+    public function jadwal()
+    {
+        return $this->belongsToMany(Jadwal::class, 'jadwal_pelatih', 'pelatih_id', 'jadwal_id');
+    }
 }

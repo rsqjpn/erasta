@@ -97,21 +97,37 @@ class UsersController extends Controller
             return redirect()->back()->with('error', 'User tidak ditemukan!');
         }
 
+        // Validasi input
         $validator = Validator::make($request->all(), [
             'username' => 'sometimes|required|string|max:50|unique:users,username,' . $id,
             'email' => 'sometimes|required|string|email|max:100|unique:users,email,' . $id,
-            'password' => 'sometimes|required|string|min:6'
+            'password' => 'sometimes|required|string|min:6',
+            'profile' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048' // Validasi untuk gambar
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        // Upload file profile jika ada
+        if ($request->hasFile('profile')) {
+            $file = $request->file('profile');
+            $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension(); // Nama unik untuk file
+            $file->move(public_path('img/profile'), $fileName); // Simpan ke folder public/img/profile
+
+            // Hapus gambar lama jika ada
+            if ($user->profile && file_exists(public_path('img/profile/' . $user->profile))) {
+                unlink(public_path('img/profile/' . $user->profile));
+            }
+
+            $user->profile = $fileName; // Simpan nama file baru ke database
+        }
+
+        // Update data lainnya
         $user->update([
             'username' => $request->username ?? $user->username,
             'email' => $request->email ?? $user->email,
             'password' => $request->password ? Hash::make($request->password) : $user->password,
-            'profile' => $request->profile ?? $user->profile,
             'alamat' => $request->alamat ?? $user->alamat,
             'tanggal_lahir' => $request->tanggal_lahir ?? $user->tanggal_lahir,
             'isAtlet' => $request->isAtlet ?? $user->isAtlet,
@@ -119,8 +135,9 @@ class UsersController extends Controller
             'tingkat' => $request->tingkat ?? $user->tingkat
         ]);
 
-        return redirect()->route('profile')->with('success', 'User berhasil diperbarui!');
+        return redirect()->route('user.profile')->with('success', 'User berhasil diperbarui!');
     }
+
 
 
 

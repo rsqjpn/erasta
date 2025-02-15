@@ -3,7 +3,7 @@
 @section('title', 'Edit Profile')
 
 @section('content')
-<div class="p-4 sm:ml-64 bg-gray-100 min-h-screen">
+<div class="p-4  min-h-screen">
     <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden p-6">
         <h1 class="text-2xl font-bold text-gray-800">Edit Profile</h1>
 

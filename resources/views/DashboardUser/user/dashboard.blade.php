@@ -9,7 +9,7 @@
             <section class="w-full md:max-w-2xl mx-auto bg-red-950 rounded-lg p-6">
                 <div class="flex gap-1  md:gap-5 items-start">
                     <img class="md:w-40 w-24 h-24 md:h-40 rounded-full object-cover border-1"
-                        src="{{ $user->profile ? asset('storage/' . $user->profile) : 'https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg' }}"
+                       src="{{ $user->profile ? asset('img/profile/' . $user->profile) : 'https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg' }}"
                         alt="Profile Picture">
                     <h1 class="text-center font-extrabold md:text-md mt-4 text-white">Selamat Datang,
                         {{ $user->username }}</h1>

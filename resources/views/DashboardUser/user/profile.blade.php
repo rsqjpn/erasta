@@ -4,20 +4,20 @@
 
 @section('content')
 
-    <div class="p-4 sm:ml-64  min-h-screen">
+    <div class="p-4 font-inter  min-h-screen">
         <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden p-6">
 
             <!-- Bagian Atas (Foto & Nama) -->
             <div class="flex flex-col md:flex-row items-center">
                 <!-- Foto Profil -->
-                <img class="w-40 h-40 rounded-lg object-cover border-4 border-gray-300"
-                    src="{{ $user->profile ? asset('storage/' . $user->profile) : 'https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg' }}"
+                <img class="w-40 h-40 rounded-full object-cover border border-gray-300"
+                    src="{{ $user->profile ? asset('img/profile/' . $user->profile) : 'https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg' }}"
                     alt="Profile Picture">
 
                 <!-- Nama & Profesi -->
                 <div class="md:ml-6 text-center md:text-left mt-4 md:mt-0">
                     <h1 class="text-2xl font-bold text-gray-800">{{ $user->username }}</h1>
-                    <p class="text-gray-600 text-sm uppercase tracking-wide">Atlet Taekwondo</p>
+                    <p class="text-gray-600 text-xs tracking-wide">Atlet Taekwondo</p>
                 </div>
             </div>
 
@@ -26,8 +26,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                 <!-- Profil Singkat -->
                 <div>
-                    <h2 class="text-lg font-semibold text-gray-800 border-b pb-1 uppercase">motivasi</h2>
-                    <p class="text-sm text-gray-600 mt-2">
+                    <h2 class="text-md font-semibold text-gray-800 border-b pb-1 uppercase">motivasi</h2>
+                    <p class="text-xs text-gray-600 mt-2">
                         Saya seorang atlet taekwondo yang aktif berkompetisi dan terus berkembang untuk mencapai prestasi
                         terbaik.
                     </p>
@@ -35,9 +35,9 @@
 
                 <!-- Pendidikan -->
                 <div>
-                    <h2 class="text-lg font-bold text-gray-800 border-b pb-1 uppercase">Tingkat Sabuk</h2>
+                    <h2 class="text-md font-bold text-gray-800 border-b pb-1 uppercase">Tingkat Sabuk</h2>
                     <p class="text-sm text-gray-600 mt-2">
-
+                        {{ $user->tingkat }}
                     </p>
                 </div>
             </div>
@@ -58,25 +58,26 @@
                 </div>
             </div>
 
-            <!-- Pengalaman -->
-            <div class="mt-6 overflow-y-auto max-h-60 p-5">
-                <h2 class="text-lg font-semibold text-gray-800 border-b pb-1">HISTORY</h2>
-
-               
-
-
+            <div class="md:flex justify-end gap-4 mt-5 border-t-2">
+                <!-- Tombol Edit -->
+                <div class="mt-6 text-right">
+                    <a href="{{ route('user.edit') }}"
+                        class="bg-red-500 text-white px-4 py-2 rounded-md text-xs font-semibold hover:bg-red-800">
+                        Complete MyData<i class="fa-regular fa-file ml-2"></i>
+                    </a>
+                </div>
+                <!-- Tombol Edit -->
+                <div class="mt-6 text-right">
+                    <a href="{{ route('user.edit') }}"
+                        class="bg-sky-500 text-white px-4 py-2 rounded-md text-xs font-semibold hover:bg-sky-800">
+                        Edit Profile <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                </div>
 
             </div>
 
 
 
-            <!-- Tombol Edit -->
-            <div class="mt-6 text-right">
-                <a href="{{ route('user.edit') }}"
-                    class="bg-sky-500 text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-sky-800">
-                    Edit Profile <i class="fa-solid fa-pen-to-square"></i>
-                </a>
-            </div>
 
         </div>
     </div>

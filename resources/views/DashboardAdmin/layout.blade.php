@@ -92,7 +92,7 @@
         </nav>
 
         <aside id="logo-sidebar"
-            class="fixed top-0 left-0 z-40 w-64 h-screen  pt-20 transition-transform -translate-x-full bg-red-900 shadow-2xl border-r border-gray-300 sm:translate-x-0 dark:bg-gray-900 dark:border-gray-700"
+            class="fixed top-0 left-0 z-40 w-56 h-screen  pt-20 transition-transform -translate-x-full bg-red-900 shadow-2xl border-r border-gray-300 sm:translate-x-0 dark:bg-gray-900 dark:border-gray-700"
             aria-label="Sidebar">
             <div class="h-full px-3 pb-4 overflow-y-auto">
                 <ul class="space-y-2 font-medium">
@@ -156,9 +156,9 @@
                                 </a>
                             </li>
                             <li>
-                                <a href=""
+                                <a href="{{ route('piagam.index') }}"
                                     class="flex font-bold items-center w-full p-2 pl-11 rounded-lg text-gray-200 text-sm dark:text-white
-                {{ Request::routeIs('baru.route') ? 'bg-slate-400 text-white' : ' dark:hover:bg-gray-700' }}">
+                {{ Request::routeIs('piagam.index') ? 'bg-slate-400 text-white' : ' dark:hover:bg-gray-700' }}">
                                     <i class="fa-solid fa-file-lines mr-2"></i>Piagam
                                 </a>
                             </li>
@@ -184,9 +184,9 @@
                                 </a>
                             </li>
                             <li>
-                                <a href=""
+                                <a href="{{ route('jadwal.index') }}"
                                     class="flex font-bold items-center w-full p-2 pl-11 rounded-lg text-gray-200 text-sm dark:text-white
-                {{ Request::routeIs('baru.route') ? 'bg-slate-400 text-white' : ' dark:hover:bg-gray-700' }}">
+                {{ Request::routeIs('jadwal.index') ? 'bg-slate-400 text-white' : ' dark:hover:bg-gray-700' }}">
                                     <i class="fa-regular fa-calendar-days mr-2"></i>Jadwal Latihan
                                 </a>
                             </li>

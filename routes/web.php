@@ -9,12 +9,12 @@ use App\Http\Controllers\GuestController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PelatihController;
 use App\Http\Controllers\Admin\MedalsController;
+use App\Http\Controllers\Admin\CertificateController;
 use App\Http\Controllers\Admin\TempatLatihanController;
+use App\Http\Controllers\Admin\JadwalController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\Auth\GoogleController;
-
-
-
+use App\Http\Controllers\JadwalController as ControllersJadwalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,11 +67,23 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::post('/achievement/store', [AchieveMedalController::class, 'store'])->name('achieve.store');
     Route::get('/achievement/search', [AchieveMedalController::class, 'search'])->name('achieve.search');
 
+    Route::get('/certificate', [CertificateController::class, 'index'])->name('piagam.index');
+
     Route::get('/location', [TempatLatihanController::class, 'index'])->name('location.index');
     Route::get('/location/{id}/edit', [TempatLatihanController::class, 'edit'])->name('location.edit');
     Route::put('/location/update/{id}', [TempatLatihanController::class, 'update'])->name('location.update');
     Route::post('/location/store', [TempatLatihanController::class, 'store'])->name('location.store');
     Route::delete('/location/destroy/{id}', [TempatLatihanController::class, 'destroy'])->name('location.destroy');
+
+
+    Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.index');
+    Route::get('/jadwal/search', [JadwalController::class, 'search'])->name('jadwal.search');
+
+    Route::get('/jadwal/edit/{id}', [JadwalController::class, 'edit'])->name('jadwal.edit');
+    Route::delete('/jadwal/{id}', [JadwalController::class, 'destroy'])->name('jadwal.destroy');
+    Route::post('/jadwal/generate', [JadwalController::class, 'generate'])->name('jadwal.generate');
+
+
 });
 
 
