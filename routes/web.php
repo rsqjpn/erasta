@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\JadwalController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\JadwalController as ControllersJadwalController;
+use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +35,15 @@ Route::get('/daftar', function () {
 });
 
 
-Route::get('/temp', [ServoController::class, 'index'])->name('index.servo');
-Route::post('/control-servo', [ServoController::class, 'controlServo']);
+
+// Menampilkan halaman kontrol AC
+Route::get('/temp', [ServoController::class, 'index']);
+Route::post('/set-temperature', [ServoController::class, 'setTemperature']);
+Route::get('/get-mode', [ServoController::class, 'getMode']);
+Route::post('/set-mode', [ServoController::class, 'setMode']);
+
+
+
 
 
 
