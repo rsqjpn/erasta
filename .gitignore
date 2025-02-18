@@ -1,8 +1,7 @@
 /node_modules
 
 /public/hot
-resources/views/testing
-app/Http/Controllers/ServoController.php
+
 /storage/*.key
 
 .env
