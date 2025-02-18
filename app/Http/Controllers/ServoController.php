@@ -49,11 +49,26 @@ class ServoController extends Controller
         ]);
     }
 
+    public function setAngle(Request $request)
+    {
+        $request->validate([
+            'angle' => 'required|integer|min:0|max:180',
+        ]);
+
+        Cache::put('servo_angle', $request->angle, now()->addMinutes(10));
+
+        return response()->json([
+            'success' => true,
+            'message' => "Sudut servo berhasil diatur ke " . $request->angle . "°",
+        ]);
+    }
+
     public function getMode()
     {
         return response()->json([
             'isAutomatic' => Cache::get('isAutomatic', false),
-            'temperature' => Cache::get('manual_temperature', 25),
+            'angle' => Cache::get('servo_angle', 90), // Default 90°
         ]);
     }
+
 }

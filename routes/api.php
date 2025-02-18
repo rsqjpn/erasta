@@ -25,3 +25,5 @@ Route::get('/temp', [ServoController::class, 'index']);
 Route::post('/set-temperature', [ServoController::class, 'setTemperature']);
 Route::get('/get-mode', [ServoController::class, 'getMode']);
 Route::post('/set-mode', [ServoController::class, 'setMode']);
+Route::post('/set-angle', [ServoController::class, 'setAngle']);
+

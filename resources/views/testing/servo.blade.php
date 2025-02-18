@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontrol Suhu ESP8266</title>
+    <title>Kontrol Servo ESP8266</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
@@ -32,31 +32,41 @@
         }
         .btn-auto { background-color: #28a745; color: white; }
         .btn-manual { background-color: #007bff; color: white; }
-        .btn-temp { background-color: #ff9800; color: white; width: 100px; margin: 5px; }
+        .slider-container {
+            display: none;
+            margin-top: 10px;
+        }
+        .slider {
+            width: 100%;
+        }
+        .slider-label {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h2>Kontrol Suhu ESP8266</h2>
+        <h2>Kontrol Servo ESP8266</h2>
         <p>Status Mode: <strong id="mode-status">Memuat...</strong></p>
-        <p>Suhu API Eksternal: <strong>{{ $temperature }}°C</strong></p>
+        <p>Sudut Servo Saat Ini: <strong id="current-angle">90</strong>°</p>
 
         <!-- Tombol Mode -->
         <button id="btn-auto" class="btn-auto" onclick="setMode(true)">Mode Otomatis</button>
         <button id="btn-manual" class="btn-manual" onclick="setMode(false)">Mode Manual</button>
 
-        <!-- Kontrol Suhu Manual -->
-        <div id="manual-controls" style="display: none;">
-            <p>Atur Suhu Manual:</p>
-            <button class="btn-temp" onclick="setTemperature(15)">15°C</button>
-            <button class="btn-temp" onclick="setTemperature(25)">25°C</button>
-            <button class="btn-temp" onclick="setTemperature(30)">30°C</button>
+        <!-- Slider untuk Mode Manual -->
+        <div id="manual-controls" class="slider-container">
+            <p>Atur Sudut Servo:</p>
+            <input type="range" min="0" max="180" step="1" value="90" id="servo-slider" class="slider" oninput="updateSliderValue(this.value)">
+            <p class="slider-label">Sudut: <span id="slider-value">90</span>°</p>
+            <button onclick="setServoAngle()">Set Sudut</button>
         </div>
     </div>
 
     <script>
-        // Mengambil status mode dan suhu saat ini
         function fetchStatus() {
             axios.get("{{ url('/api/get-mode') }}")
                 .then(response => {
@@ -69,11 +79,14 @@
                     } else {
                         document.getElementById("manual-controls").style.display = "block";
                     }
+
+                    document.getElementById("servo-slider").value = data.angle;
+                    document.getElementById("slider-value").innerText = data.angle;
+                    document.getElementById("current-angle").innerText = data.angle;
                 })
                 .catch(error => console.error("Gagal mendapatkan status:", error));
         }
 
-        // Ubah mode (Otomatis/Manual)
         function setMode(isAutomatic) {
             axios.post("{{ url('/api/set-mode') }}", { isAutomatic })
                 .then(response => {
@@ -83,16 +96,20 @@
                 .catch(error => console.error("Gagal mengubah mode:", error));
         }
 
-        // Atur suhu manual (hanya aktif di mode Manual)
-        function setTemperature(temp) {
-            axios.post("{{ url('/api/set-temperature') }}", { temperature: temp })
-                .then(response => {
-                    alert(response.data.message);
-                })
-                .catch(error => console.error("Gagal mengubah suhu:", error));
+        function updateSliderValue(value) {
+            document.getElementById("slider-value").innerText = value;
         }
 
-        // Load status saat halaman dibuka
+        function setServoAngle() {
+            let angle = document.getElementById("servo-slider").value;
+            axios.post("{{ url('/api/set-angle') }}", { angle: angle })
+                .then(response => {
+                    alert(response.data.message);
+                    document.getElementById("current-angle").innerText = angle;
+                })
+                .catch(error => console.error("Gagal mengubah sudut servo:", error));
+        }
+
         fetchStatus();
     </script>
 
