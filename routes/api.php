@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ServoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Menampilkan halaman kontrol AC
+Route::get('/temp', [ServoController::class, 'index']);
+Route::post('/set-temperature', [ServoController::class, 'setTemperature']);
+Route::get('/get-mode', [ServoController::class, 'getMode']);
+Route::post('/set-mode', [ServoController::class, 'setMode']);

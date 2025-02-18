@@ -3,7 +3,6 @@
 use App\Http\Controllers\Admin\AchieveMedalController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\ServoController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\Admin\UserController;
@@ -36,11 +35,7 @@ Route::get('/daftar', function () {
 
 
 
-// Menampilkan halaman kontrol AC
-Route::get('/temp', [ServoController::class, 'index']);
-Route::post('/set-temperature', [ServoController::class, 'setTemperature']);
-Route::get('/get-mode', [ServoController::class, 'getMode']);
-Route::post('/set-mode', [ServoController::class, 'setMode']);
+
 
 
 
