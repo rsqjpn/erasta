@@ -11,14 +11,12 @@ class ServoController extends Controller
 {
     public function index()
     {
-        // Mengabaikan verifikasi SSL sementara
+        // Ambil suhu dari API eksternal
         $response = Http::withoutVerifying()->get('https://kanmoemployeeportal.com/apiV1/get-temperature');
 
-        if ($response->successful()) {
-            $temperature = $response->json()['suhu'];
-        } else {
-            $temperature = 'Tidak dapat mengambil data';
-        }
+        $temperature = ($response->successful() && isset($response->json()['suhu']))
+            ? $response->json()['suhu']
+            : 'Tidak dapat mengambil data';
 
         return view('testing.servo', compact('temperature'));
     }
@@ -29,16 +27,14 @@ class ServoController extends Controller
             'temperature' => 'required|integer|in:15,25,30',
         ]);
 
-        $temperature = $request->temperature;
-        Cache::put('manual_temperature', $temperature, now()->addMinutes(10));
+        Cache::put('manual_temperature', $request->temperature, now()->addMinutes(10));
 
         return response()->json([
             'success' => true,
-            'message' => "Suhu berhasil diatur ke $temperature °C",
+            'message' => "Suhu berhasil diatur ke " . $request->temperature . "°C",
         ]);
     }
 
-    // Set mode manual/otomatis
     public function setMode(Request $request)
     {
         $request->validate([
@@ -53,15 +49,11 @@ class ServoController extends Controller
         ]);
     }
 
-    // Dapatkan mode dan suhu
     public function getMode()
     {
-        $isAutomatic = Cache::get('isAutomatic', false);
-        $temperature = Cache::get('manual_temperature', 25);
-
         return response()->json([
-            'isAutomatic' => $isAutomatic,
-            'temperature' => $temperature,
+            'isAutomatic' => Cache::get('isAutomatic', false),
+            'temperature' => Cache::get('manual_temperature', 25),
         ]);
     }
 }

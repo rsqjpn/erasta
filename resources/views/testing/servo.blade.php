@@ -58,7 +58,7 @@
     <script>
         // Mengambil status mode dan suhu saat ini
         function fetchStatus() {
-            axios.get("{{ url('/get-mode') }}")
+            axios.get("{{ url('/api/get-mode') }}")
                 .then(response => {
                     let data = response.data;
                     let modeStatus = data.isAutomatic ? "Otomatis" : "Manual";
@@ -75,7 +75,7 @@
 
         // Ubah mode (Otomatis/Manual)
         function setMode(isAutomatic) {
-            axios.post("{{ url('/set-mode') }}", { isAutomatic })
+            axios.post("{{ url('/api/set-mode') }}", { isAutomatic })
                 .then(response => {
                     alert(response.data.message);
                     fetchStatus();
@@ -85,7 +85,7 @@
 
         // Atur suhu manual (hanya aktif di mode Manual)
         function setTemperature(temp) {
-            axios.post("{{ url('/set-temperature') }}", { temperature: temp })
+            axios.post("{{ url('/api/set-temperature') }}", { temperature: temp })
                 .then(response => {
                     alert(response.data.message);
                 })
